@@ -21,7 +21,7 @@
 
   <script>
   async function loadTeams() {
-    const res = await fetch('https://pokecombo-api.onrender.com/api/team');
+    const res = await fetch('https://pokecombo-api.onrender.com/api/teams');
     const teams = await res.json();
 
     const container = document.getElementById('savedTeams');
