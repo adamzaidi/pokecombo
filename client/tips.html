@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Battle Tips</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="team.html">Team Builder</a>
+    <a href="saved.html">Saved Teams</a>
+    <a href="counter.html">Counter Checker</a>
+    <a href="tips.html">Battle Tips</a>
+  </nav>
+
+  <div class="glass-panel tips-panel">
+    <h1>Battle Tips</h1>
+
+    <div class="input-row">
+      <input id="tipInput" placeholder="Enter Pokémon name (e.g., charizard)" />
+      <button onclick="addToTipTeam()">Add</button>
+    </div>
+
+    <h2>Your Team</h2>
+    <div id="tipTeam" class="preview-grid"></div>
+
+    <h2>Type Breakdown</h2>
+    <ul id="typeBreakdown" class="type-breakdown-list"></ul>
+    <canvas id="typeChart" width="250" height="250"></canvas>
+
+    <h2>Tips</h2>
+    <ul id="warnings"></ul>
+  </div>
+
+  <script>
+    const tipTeam = [];
+    const allTypes = [
+      "normal", "fire", "water", "grass", "electric", "ice", "fighting", "poison",
+      "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"
+    ];
+
+    async function addToTipTeam() {
+      const input = document.getElementById('tipInput');
+      const name = input.value.trim().toLowerCase();
+      if (!name) return;
+
+      try {
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        if (!res.ok) throw new Error('Pokémon not found');
+
+        const data = await res.json();
+        tipTeam.push({
+          name: data.name,
+          id: data.id,
+          types: data.types.map(t => t.type.name)
+        });
+        input.value = '';
+        updateUI();
+      } catch (err) {
+        alert(err.message);
+      }
+    }
+
+    function updateUI() {
+      const teamList = document.getElementById('tipTeam');
+      teamList.innerHTML = tipTeam.map(p => `
+        <div class="preview-card">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png" alt="${p.name}" />
+          <h3>${p.name}</h3>
+          <p>${p.types.join(' / ')}</p>
+        </div>
+      `).join('');
+
+      const typeCounts = {};
+      tipTeam.forEach(p => {
+        p.types.forEach(t => {
+          typeCounts[t] = (typeCounts[t] || 0) + 1;
+        });
+      });
+
+      const breakdownList = document.getElementById('typeBreakdown');
+      breakdownList.innerHTML = allTypes.map(type => {
+        const count = typeCounts[type] || 0;
+        let color = "#aaa";
+        if (count >= 3) color = "red";
+        else if (count === 2) color = "orange";
+        else if (count === 1) color = "limegreen";
+        return `<li style="color:${color}">${type}: ${count}</li>`;
+      }).join('');
+
+      const warningsList = document.getElementById('warnings');
+      const warnings = Object.entries(typeCounts)
+        .filter(([_, count]) => count >= 3)
+        .map(([type]) => `<li style="color:red">⚠ Too many ${type}-types — consider diversifying!</li>`)
+        .join('');
+
+      warningsList.innerHTML = warnings || `<li class="tip-ok">No major balance issues detected.</li>`;
+
+      const missingTypes = allTypes.filter(t => !(t in typeCounts));
+      warningsList.innerHTML += `<li class="tip-missing"><strong>Types you haven’t used:</strong> ${missingTypes.join(', ')}</li>`;
+
+      drawChart(typeCounts);
+    }
+
+    function drawChart(typeCounts) {
+      const ctx = document.getElementById('typeChart').getContext('2d');
+      if (window.typeChart && typeof window.typeChart.destroy === 'function') {
+        window.typeChart.destroy();
+      }
+
+      window.typeChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: Object.keys(typeCounts),
+          datasets: [{
+            label: 'Type Count',
+            data: Object.values(typeCounts),
+            backgroundColor: Object.keys(typeCounts).map(type => {
+              const colors = {
+                fire: '#F08030', water: '#6890F0', grass: '#78C850',
+                electric: '#F8D030', ice: '#98D8D8', fighting: '#C03028',
+                poison: '#A040A0', ground: '#E0C068', flying: '#A890F0',
+                psychic: '#F85888', bug: '#A8B820', rock: '#B8A038',
+                ghost: '#705898', dragon: '#7038F8', dark: '#705848',
+                steel: '#B8B8D0', fairy: '#EE99AC', normal: '#A8A878'
+              };
+              return colors[type] || '#ccc';
+            }),
+            borderWidth: 1
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              position: 'right'
+            }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>

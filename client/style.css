@@ -1,0 +1,343 @@
+/* === BATTLE REVOLUTION - COLOSSEUM MAP THEME === */
+
+/* Background */
+body {
+  margin: 0;
+  padding: 20px;
+  background: url("https://external-preview.redd.it/aC7zQKO6GH1UVuAB_K31hwncC23H-O3C1-CJODnHB_U.png?auto=webp&s=ad1def80446bd62c4931612260ea5fb38ea1af66") no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', sans-serif;
+  color: #eaeaea;
+}
+
+/* Navigation Bar */
+nav {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  background: rgba(0, 30, 60, 0.6);
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 30, 60, 0.5);
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  color: #c8f0ff;
+  text-shadow: 0 0 2px #113b60;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: #ffdd88;
+}
+
+/* Glass Panel */
+.glass-panel {
+  background: rgba(0, 0, 30, 0.5);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 30px 40px;
+  margin: 30px auto;
+  max-width: 850px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Headings */
+h1, h2 {
+  text-align: center;
+  color: #ffe27a;
+  text-shadow: 0 0 6px #000;
+  margin-top: 0;
+}
+
+/* Input + Button Row */
+.input-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Input Styling */
+input {
+  padding: 10px 15px;
+  font-size: 16px;
+  width: 250px;
+  border-radius: 8px;
+  border: 2px solid #88c6ff;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  backdrop-filter: blur(4px);
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+}
+
+/* Buttons */
+button {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background: linear-gradient(to bottom, #336699, #224466);
+  color: white;
+  border: 2px solid #88c6ff;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: linear-gradient(to bottom, #5588bb, #336699);
+  transform: scale(1.05);
+}
+
+/* Chart */
+#typeChart {
+  display: block;
+  margin: 20px auto;
+  max-width: 300px;
+  max-height: 300px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid #88c6ff;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 0 15px #88c6ff33;
+}
+
+/* List Sections */
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+  text-align: center;
+}
+
+li {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+/* Team Preview Cards */
+.preview-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.preview-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid #88c6ff44;
+  border-radius: 10px;
+  padding: 15px;
+  width: 140px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+}
+
+.preview-card img {
+  width: 96px;
+  height: 96px;
+}
+
+.preview-card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  color: #ffda6f;
+  text-shadow: 0 0 3px black;
+}
+
+.preview-card p {
+  font-size: 14px;
+  color: #a0d6ff;
+  margin-bottom: 8px;
+}
+
+.preview-card button {
+  font-size: 13px;
+  padding: 6px 10px;
+  background: rgba(255, 80, 80, 0.85);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.preview-card button:hover {
+  background: rgba(255, 0, 0, 0.9);
+}
+
+/* Responsive Cleanup */
+@media (max-width: 500px) {
+  input {
+    width: 90%;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .input-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.tip-missing {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 10px auto;
+}
+
+.tip-ok {
+  color: #a2fca2;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+  text-shadow: 0 0 3px #000;
+}
+
+.saved-team {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.saved-team h2 {
+  font-size: 22px;
+  color: #ffda6f;
+  margin-bottom: 15px;
+  text-shadow: 0 0 3px black;
+}
+
+.team-builder-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 30px;
+  gap: 12px;
+}
+
+.team-size-container {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+#teamCount {
+  font-size: 22px;
+  color: #ffd700;
+  text-shadow: 0 0 3px black;
+  margin: 0;
+}
+
+.counter-panel {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.tips-panel {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Team Preview Cards */
+.preview-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.preview-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid #88c6ff44;
+  border-radius: 10px;
+  padding: 15px;
+  width: 140px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+}
+
+.preview-card img {
+  width: 96px;
+  height: 96px;
+}
+
+.preview-card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  color: #ffda6f;
+  text-shadow: 0 0 3px black;
+}
+
+.preview-card p {
+  font-size: 14px;
+  color: #a0d6ff;
+  margin-bottom: 8px;
+}
+
+/* Redesigned Type Breakdown */
+.type-breakdown-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  justify-content: center;
+  padding: 0;
+  margin: 20px auto;
+  max-width: 500px;
+  list-style: none;
+}
+
+.type-breakdown-list li {
+  font-weight: bold;
+  font-size: 15px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 2px #000;
+}
+
+.home-panel {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 40px;
+  text-align: center;
+}
+
+.highlight {
+  color: #ffcc00;
+  text-shadow: 0 0 8px #000;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #ccc;
+  margin-bottom: 30px;
+  font-style: italic;
+  text-shadow: 0 0 5px #000;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Saved Teams</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="team.html">Team Builder</a>
+    <a href="saved.html">Saved Teams</a>
+    <a href="counter.html">Counter Checker</a>
+    <a href="tips.html">Battle Tips</a>
+  </nav>
+
+  <div class="glass-panel">
+  <h1>Saved Teams</h1>
+  <div id="savedTeams" class="team-grid"></div>
+</div>
+
+  <script>
+  async function loadTeams() {
+    const res = await fetch('http://localhost:3001/api/teams');
+    const teams = await res.json();
+
+    const container = document.getElementById('savedTeams');
+    container.innerHTML = '';
+
+    for (const team of teams) {
+      const teamSection = document.createElement('div');
+      teamSection.classList.add('saved-team');
+
+      const heading = document.createElement('h2');
+      heading.textContent = team.team_name;
+      teamSection.appendChild(heading);
+
+      const grid = document.createElement('div');
+      grid.classList.add('preview-grid');
+
+      for (const name of team.members) {
+        const pokemonData = await fetch(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
+        if (!pokemonData.ok) continue;
+
+        const data = await pokemonData.json();
+        const card = document.createElement('div');
+        card.classList.add('preview-card');
+
+        card.innerHTML = `
+          <img src="${data.sprites.front_default}" alt="${name}" />
+          <h3>${name}</h3>
+          <p>${data.types.map(t => t.type.name).join(' / ')}</p>
+        `;
+
+        grid.appendChild(card);
+      }
+
+      teamSection.appendChild(grid);
+      container.appendChild(teamSection);
+    }
+  }
+
+  loadTeams();
+</script>
+</body>
+</html>

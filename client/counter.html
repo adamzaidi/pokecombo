@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Counter Checker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="team.html">Team Builder</a>
+        <a href="saved.html">Saved Teams</a>
+        <a href="counter.html">Counter Checker</a>
+        <a href="tips.html">Battle Tips</a>
+    </nav>
+  <div class="glass-panel counter-panel">
+    <h1>Counter Checker</h1>
+
+    <div class="input-row">
+      <input id="typeInput" placeholder="Enter a Pokémon type (e.g., fire)" />
+      <button onclick="checkCounters()">Check Counters</button>
+    </div>
+
+    <ul id="counterResults"></ul>
+    <p id="typeError" style="color:red; text-align:center;"></p>
+  </div>
+
+  <script>
+    async function checkCounters() {
+      const type = document.getElementById('typeInput').value.toLowerCase().trim();
+      if (!type) return;
+
+      const res = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+      if (!res.ok) {
+        alert("Invalid type!");
+        return;
+      }
+
+      const data = await res.json();
+      const counters = data.damage_relations.double_damage_from;
+
+      document.getElementById('counterResults').innerHTML =
+        counters.length === 0
+          ? "<li>No type is super effective against this.</li>"
+          : counters.map(t => `<li>${t.name}</li>`).join('');
+    }
+  </script>
+</body>
+</html>

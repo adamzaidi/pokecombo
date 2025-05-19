@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Team Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="team.html">Team Builder</a>
+    <a href="saved.html">Saved Teams</a>
+    <a href="counter.html">Counter Checker</a>
+    <a href="tips.html">Battle Tips</a>
+  </nav>
+
+  <div class="glass-panel team-builder-panel">
+  <h1>Pokémon Team Builder</h1>
+
+  <div class="input-row">
+    <input id="pokeInput" placeholder="Enter Pokémon Name" />
+    <button onclick="addPokemon()">Add</button>
+    <button onclick="saveTeam()">Save Team</button>
+  </div>
+
+  <div class="team-size-container">
+    <h2 id="teamCount">Team Size: 0 / 6</h2>
+  </div>
+
+  <div id="teamList" class="preview-grid"></div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
