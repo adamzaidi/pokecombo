@@ -1,16 +1,20 @@
+PokéCombo
+=========
 ON VERCEL @ https://pokecombo-adamzaidis-projects.vercel.app
 
 PokéCombo is a full-stack web application that allows users to build, analyze, and optimize Pokémon battle teams.
 It provides real-time feedback on team composition, type coverage, and potential weaknesses using data from PokéAPI and persistent storage through Supabase.
 The application is designed to support decision-making during team construction and to enhance strategic planning in competitive contexts.
 
-FEATURES:
+Features
+--------
 - Team Builder: Add up to six Pokémon to form a complete team.
 - Saved Teams: View previously stored teams retrieved from a Supabase database.
 - Counter Checker: Input a type and return effective counter types for strategic planning.
 - Battle Tips: Analyze a team’s type distribution and visualize it using a pie chart.
 
-THE APPLICATION IS COMPATIBLE WITH THE FOLLOWING PLATFORMS:
+Target Platforms and Browsers
+-----------------------------
 
 - Google Chrome (desktop and mobile)
 - Mozilla Firefox
@@ -19,7 +23,8 @@ THE APPLICATION IS COMPATIBLE WITH THE FOLLOWING PLATFORMS:
 
 
 
-DEVELOPER MANUAL:
+Developer Manual
+----------------
 
 ### Installation Instructions
 
@@ -47,7 +52,8 @@ Then open the client/index.html file in your browser, or use a local server envi
 
 
 
-API DOCUMENTATION:
+API Documentation
+-----------------
 
 ### GET /api/teams
 
@@ -80,7 +86,8 @@ Example Request Body:
 
 
 
-KNOWN ISSUES AND ROADMAP:
+Known Issues and Roadmap
+-------------------------
 
 ### Current Limitations
 
