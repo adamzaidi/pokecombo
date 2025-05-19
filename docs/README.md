@@ -95,6 +95,7 @@ Known Issues and Roadmap
 
 - Pokémon with special forms or hyphenated names (e.g., "mr-mime", "nidoran-f") may not resolve correctly without exact spelling.
 - The application does not currently support fuzzy search or autocomplete features.
+- PokeAPI does not currently contain information about Pokemon with two or more forms
 
 ### Future Improvements
 
