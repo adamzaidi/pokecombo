@@ -1,7 +1,10 @@
 PokéCombo
 =========
 ON VERCEL @ https://pokecombo-adamzaidis-projects.vercel.app
+
 Note: This project includes an Express backend with two custom endpoints (/api/team, /api/teams) used to interact with a Supabase database. These endpoints are fully functional locally but are not deployed to a public server due to hosting limitations on Vercel.
+
+
 
 PokéCombo is a full-stack web application that allows users to build, analyze, and optimize Pokémon battle teams.
 It provides real-time feedback on team composition, type coverage, and potential weaknesses using data from PokéAPI and persistent storage through Supabase.
