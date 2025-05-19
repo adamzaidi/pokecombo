@@ -29,8 +29,7 @@ Target Platforms and Browsers
 
 
 
-Developer Manual
-----------------
+[Developer Manual](#developer-manual)
 
 ### Installation Instructions
 
