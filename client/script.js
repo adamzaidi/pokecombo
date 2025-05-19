@@ -1,6 +1,5 @@
 const team = [];
 
-// Fetches Pokémon data from PokéAPI
 async function getPokemon(name) {
   try {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
