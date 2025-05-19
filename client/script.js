@@ -78,7 +78,7 @@ async function saveTeam() {
   saveBtn.textContent = "Saving...";
 
   try {
-    const res = await fetch('https://pokecombo-api.onrender.com/api/teams', {
+    const res = await fetch('https://pokecombo-api.onrender.com/api/team', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ teamName, members: team.map(p => p.name) })
