@@ -2,7 +2,7 @@ PokéCombo
 =========
 ON VERCEL @ https://pokecombo-adamzaidis-projects.vercel.app
 
-Note: This project includes an Express backend with two custom endpoints (/api/team, /api/teams) used to interact with a Supabase database. These endpoints are fully functional locally but are not deployed to a public server due to hosting limitations on Vercel.
+Note: This project includes an Express backend with two custom endpoints used to interact with a Supabase database. These endpoints are fully functional locally but are not deployed to a public server due to hosting limitations on Vercel.
 
 
 
