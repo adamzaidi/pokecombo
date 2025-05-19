@@ -12,7 +12,6 @@ async function getPokemon(name) {
   }
 }
 
-// Adds Pokémon to team array with sprite and types
 async function addPokemon() {
   const input = document.getElementById('pokeInput');
   const name = input.value.trim().toLowerCase();
@@ -43,7 +42,6 @@ async function addPokemon() {
   input.value = '';
 }
 
-// Removes Pokémon by name
 function removePokemon(name) {
   const index = team.findIndex(p => p.name === name);
   if (index !== -1) {
@@ -52,7 +50,6 @@ function removePokemon(name) {
   }
 }
 
-// Renders the team visually
 function updateTeamPreview() {
   const list = document.getElementById('teamList');
   const countDisplay = document.getElementById('teamCount');
@@ -68,7 +65,6 @@ function updateTeamPreview() {
   `).join('');
 }
 
-// Sends the team to the backend
 async function saveTeam() {
   if (team.length === 0) {
     alert("You need to add some Pokémon first!");
@@ -83,7 +79,7 @@ async function saveTeam() {
   saveBtn.textContent = "Saving...";
 
   try {
-    const res = await fetch('http://localhost:3001/api/team', {
+    const res = await fetch('https://pokecombo-api.onrender.com/api/teams', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ teamName, members: team.map(p => p.name) })
